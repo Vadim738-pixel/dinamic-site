@@ -14,9 +14,9 @@
 if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['topic-create'])) {
 
 
-   tt($_POST);
+  // tt($_POST);
   //  echo "Я прийшов із форми регістрації!!!";
-    exit();
+    //exit();
 
     $name = trim($_POST["name"]);
     $description = trim($_POST["description"]);

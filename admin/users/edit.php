@@ -54,7 +54,9 @@ include "../../app/controllers/users.php";
 
 
 
-                <form action="create.php" method="post">
+                <form action="edit.php" method="post">
+
+                    <input name="id" value="<?=@$id?>" type="hidden" >
 
                     <div>
                         <h2>Створення користувача</h2>
@@ -67,8 +69,8 @@ include "../../app/controllers/users.php";
                     </div>
 
                     <div class="col">
-                        <label for="formGroupExampleInput" class="form-label">Ваш логін</label>
-                        <input name="login" value="<?=@$login?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="Уведіть Ваш логін">
+                        <label for="formGroupExampleInput" class="form-label">Логін</label>
+                        <input name="login" value="<?=@$username?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="Уведіть Ваш логін">
                     </div>
 
                     <div class="w-100"></div>
@@ -82,7 +84,7 @@ include "../../app/controllers/users.php";
                     <div class="w-100"></div>
 
                     <div class="col">
-                        <label for="exampleInputPassword1" class="form-label">Пароль</label>
+                        <label for="exampleInputPassword1" class="form-label">Створіть новий пароль</label>
                         <input name="pass-first" type="password" class="form-control" id="exampleInputPassword1" >
                     </div>
 
@@ -104,7 +106,7 @@ include "../../app/controllers/users.php";
                     </div>
 
                     <div class="col">
-                        <button name='create-user' class="btn btn-primary" type="submit">Створити запис</button>
+                        <button name='update-user' class="btn btn-primary" type="submit">Обновити</button>
                     </div>
 
                 </form>

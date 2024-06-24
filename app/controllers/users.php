@@ -2,8 +2,13 @@
 @include "path.php";
 @include  "app/database/db.php";
 
+@include "../../path.php";
+@include  "../../app/database/db.php";
+
 
 $errMsg = '';
+
+$users = selectAll('users');
 
 
 function userAuth($user){
@@ -135,9 +140,10 @@ if (isset($_POST["login"])) {
 
 if($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['create-user'])) {
 
-    tt($_POST);
+   // tt($_POST);
     //echo "Я прийшов із форми регістрації!!!";
  //  exit();
+
 
     $admin = 0;
     $login = trim($_POST["login"]);
@@ -171,17 +177,17 @@ if($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['create-user'])) {
             $id = insert('users', $user);
             $user = selectOne('users', ['id' => $id]);
 
-            userAuth($user);
-/*
+           // userAuth($user);
+
             $_SESSION['id'] = $user['id'];
             $_SESSION['login'] = $user['username'];
             $_SESSION['admin'] = $user['admin'];
 
             if ($_SESSION['admin']) {
-                header('Location: ' . BASE_URL . "admin/post/index.php");
+                header('Location: ' . BASE_URL . "admin/users/create.php");
             }else{
                 header('Location: ' . BASE_URL);
-            }                                                     */
+            }
 
 
         }
@@ -191,3 +197,104 @@ if($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['create-user'])) {
     $email = "";
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////
+
+ // Видалення користувача
+
+if ($_SERVER['REQUEST_METHOD'] === "GET" && isset($_GET['delete_id'])) {
+    $id = $_GET['delete_id'];
+    delete ("users", $id);
+    header('Location: ' . BASE_URL .  "admin/users/index.php");
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+
+
+// Редактування  UPDATE  USERS THROW ADMIN
+
+if ($_SERVER['REQUEST_METHOD'] === "GET" && isset($_GET['edit_id'])) {
+
+    $user = selectOne('users', ['id' =>$_GET['edit_id']]);
+
+
+    $id = $user['id'];
+    $admin = $user['admin'];
+    $username = $user['username'];
+    $email = $user['email'];
+
+}
+
+
+      // tt($_POST);
+   // tt($user['id']);
+ //   exit();
+
+
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['update-user'])) {
+
+
+    // tt($_POST);
+    // echo "Я прийшов із форми регістрації!!!";
+    // exit();
+    $id = @$_POST['id'];
+    $email = trim($_POST["email"]);
+    $login = trim($_POST["login"]);
+    $passwordF = trim($_POST["pass-first"]);
+    $passwordS = trim($_POST["pass-second"]);
+
+   // $admin = isset($_POST["admin"]) !== null ? 1 : 0;
+    $admin = isset($_POST["admin"]) ? 1 : 0;
+
+
+
+    if ($email === '' || $login === '') {
+        array_push($errMsg,  'Не всі поля заповнені!!!');
+    }elseif (mb_strlen($login, 'UTF-8') < 2) {
+        array_push($errMsg,  "Логін повинен бути не менше 2-х символів");
+    } elseif ($passwordF !== $passwordS) {
+        $errMsg = "Паролі в обох полях повинні відповідати один одному";
+    }else {
+        $pass = password_hash($passwordF , PASSWORD_DEFAULT);
+        if (isset($_POST['admin'])) $admin = 1;
+        $user = [
+            'admin' => $admin,
+            'username' => $login,
+            'email' => $email,
+            'password' => $pass
+        ];
+
+
+
+
+             // tt($user);
+
+        $user = update('users', $id, $user);
+        header('Location: ' . BASE_URL .  "admin/users/index.php");
+
+    }
+
+} else {
+   $login = '';
+   $email = '';
+}
+
+
+
+/*
+
+if ($_SERVER['REQUEST_METHOD'] === "GET" && isset($_GET['pub_id'])) {
+    $id = $_GET['pub_id'];
+    $publish = $_GET['publish'];
+    $postId = update('posts', $id, ["status" => $publish]);
+
+    header('Location: ' . BASE_URL .  "admin/posts/index.php");
+    exit();
+}
+
+
+*/

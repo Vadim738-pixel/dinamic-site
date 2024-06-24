@@ -33,62 +33,48 @@ include "../../app/controllers/users.php";
 
 <div class="container">
 
-        <?php include ("../../app/include/sidebar-admin.php") ?>
+    <?php include ("../../app/include/sidebar-admin.php") ?>
 
-        <div class="posts col-9">
-            <div class="button row">
-                <a href="<?php echo BASE_URL . "admin/users/create.php"?>"  class="col-3 btn-success">Створити</a>
-                <span class="col-1"></span>
-                <a href="<?php echo BASE_URL . "admin/users/index.php"?>"  class="col-3 btn-warning">Управління</a>
-            </div>
+    <div class="posts col-9">
+        <div class="button row">
+            <a href="<?php echo BASE_URL . "admin/users/create.php"?>"  class="col-3 btn-success">Створити</a>
+            <span class="col-1"></span>
+            <a href="<?php echo BASE_URL . "admin/users/index.php"?>"  class="col-3 btn-warning">Управління</a>
+        </div>
 
-            <h2>Користувачі</h2>
+        <h2>Користувачі</h2>
 
-            <div class="row title-table">
+        <div class="row title-table">
 
 
-                <div class="col-1">ID</div>
-                <div class="col-2">Логін</div>
-                <div class="col-3">Email</div>
-                <div class="col-2">Роль</div>
-                <div class="col-4">Управління</div>
-
-            </div>
-
-            <div class="row post">
-                <div class="id col-1">1</div>
-                <div class="title col-5">Vadim@com</div>
-                <div class="author col-2">Admin</div>
-                <div class="red col-2"><a href="">edit</a></div>
-                <div class="del col-2"><a href="">delete</a></div>
-            </div>
-
-            <div class="row post">
-                <div class="id col-1">2</div>
-                <div class="title col-5">Radush@com</div>
-                <div class="author col-2">User</div>
-                <div class="red col-2"><a href="">edit</a></div>
-                <div class="del col-2"><a href="">delete</a></div>
-            </div>
-
-            <div class="row post">
-                <div class="id col-1">3</div>
-                <div class="title col-5">Andryi@com</div>
-                <div class="author col-2">Admin</div>
-                <div class="red col-2"><a href="">edit</a></div>
-                <div class="del col-2"><a href="">delete</a></div>
-            </div>
-
-            <div class="row post">
-                <div class="id col-1">4</div>
-                <div class="title col-5">Ivanka@com</div>
-                <div class="author col-2">User</div>
-                <div class="red col-2"><a href="">edit</a></div>
-                <div class="del col-2"><a href="">delete</a></div>
-            </div>
+            <div class="col-1">ID</div>
+            <div class="col-2">Логін</div>
+            <div class="col-3">Email</div>
+            <div class="col-2">Роль</div>
+            <div class="col-4">Управління</div>
 
         </div>
+
+
+        <?php foreach ($users as $key => $user): ?>
+
+        <div class="row post">
+            <div class="id col-1"><?=$user['id'];?></div>
+            <div class="title col-2"><?=$user['username'];?></div>
+            <div class="author col-3"><?=$user['email'];?></div>
+
+            <?php if ($user['admin'] == 1): ?>
+            <div class="red col-2">Admin</div>
+            <?php else: ?>
+            <div class="red col-2">User</div>
+            <?php endif; ?>
+            <div class="red col-2"><a href="edit.php?edit_id=<?=$user['id'];?>">edit</a></div>
+            <div class="del col-2"><a href="index.php?delete_id=<?=$user['id'];?>">delete</a></div>
+        </div>
+       <?php endforeach; ?>
+
     </div>
+</div>
 
 </div>
 
@@ -108,5 +94,3 @@ include "../../app/controllers/users.php";
 -->
 </body>
 </html>
-
-

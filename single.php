@@ -2,6 +2,12 @@
 <?php include ("path.php");
 include ("app/database/db.php") ;
 include "app/controllers/topics.php";
+
+//tt($_GET);
+// tt($_GET[post]);
+
+// $post = selectOne('posts', ['id' => $_GET['post']]);
+//tt($post);
 ?>
 
 <!doctype html>

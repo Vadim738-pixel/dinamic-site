@@ -5,6 +5,11 @@ include ("app/database/db.php") ;
 include "app/controllers/topics.php";
 
 
+// $posts = selectAll('posts', ['status' => 1]);
+
+$posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
+
+// tt($posts);
 ?>
 
 
@@ -93,24 +98,32 @@ include "app/controllers/topics.php";
 
         <div class="main-content col-md-9">
             <h2>Останні публікації</h2>
+
+            <?php foreach ($posts as $post): ?>
+
             <div class="post row">
                 <div class="img col-12 col-md-4">
-                    <img src="assets/Image/IMG_20240426_145721.jpg" class="img-thumbnail" alt="...">
-                </div>
-                <div class="post_text col-12 col-md-8">
 
+                    <img src= "<?= BASE_URL . 'assets/images/posts/' . $post['img']; ?>" class="img-thumbnail" alt="<?=$post['titel']?>" >
+
+
+
+                </div>
+
+                <div class="post_text col-12 col-md-8">
                     <h3>
-                        <a href="#"> Популярна стаття на тему динамічного сайту...</a>
+                        <a href="<?=BASE_URL . 'single.php?post=' . $post['id'];?>"> <?=substr($post['titel'], 0, 120) . '...'?></a>
                     </h3>
-                    <i class="far fa-user"> Ім'я автора </i>
-                    <i class="far fa-calendar">   Бер 11, 2023  </i>
+                    <i class="far fa-user"> <?=$post['username']; ?> </i>
+                    <i class="far fa-calendar">  <?=$post['created_date']; ?> </i>
                     <p class="preview-text">
-                        Ця стаття написана про те, як наша доблесна 42 рота копає окопи!!!
-                        І в цій статті ви знайдете дуже багато чого цікавого для себе!!!
+
+                        <?=mb_substr($post['content'], 0, 150, 'UTF-8') . '...'?>
+
                     </p>
                 </div>
             </div>
-
+        <?php endforeach; ?>
 
 
 
