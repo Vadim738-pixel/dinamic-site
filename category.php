@@ -3,13 +3,12 @@
 include ("path.php") ;
 include ("app/database/db.php") ;
 include "app/controllers/topics.php";
-
-
-
 // $posts = selectAll('posts', ['status' => 1]);
-
-$posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
-
+$posts = selectAll('posts', ['id_topic' => $_GET['id']]);
+//$posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
+$category = selectOne('topics', ['id' => $_GET['id']]);
+ // tt($category);
+// tt($_GET);
 // tt($posts);
 ?>
 
@@ -41,54 +40,6 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
 <?php include ("app/include/header.php") ?>
 
 
-<!-- ПОЧАТОК БЛОКУ КАРУСЕЛІ -->
-<div class="container">
-    <div class="row">
-        <h2 class="slider-title"> Топові публікації</h2>
-        </div>
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="assets/Image/AdPage_Wallpaper2.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption hack  carousel-caption d-none d-md-block">
-                <h5><a href="">First slide label</a></h5>
-
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="assets/Image/AdPage_Wallpaper3.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption hack carousel-caption d-none d-md-block">
-                <h5><a href="">First slide label</a></h5>
-
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="assets/Image/AdPage_Wallpaper4.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption hack carousel-caption d-none d-md-block">
-                <h5><a href="">First slide label</a></h5>
-        </div>
-    </div>
-
-        <div class="carousel-item">
-            <img src="assets/Image/AdPage_Wallpaper10.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption hack carousel-caption d-none d-md-block">
-                <h5><a href="">First slide label</a></h5>
-            </div>
-        </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-</div>
-    </div>
-<!-- КІНЕЦЬ БЛОКУ КАРУСЕЛІ -->
 
 
 
@@ -100,7 +51,7 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
 
 
         <div class="main-content col-md-9">
-            <h2>Останні публікації</h2>
+            <h2> Публікації із розділу     <strong><?=$category['name']; ?></strong> </h2>
 
 
 
@@ -108,7 +59,6 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
 
             <div class="post row">
                 <div class="img col-12 col-md-4">
-
                     <img src="<?= BASE_URL . 'assets/images/posts/' . $post['img']; ?>" class="img-thumbnail" alt="<?=$post['titel']?>" >
                 </div>
 
@@ -116,7 +66,7 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
                     <h3>
                         <a href="<?=BASE_URL . 'single.php?post=' . $post['id'];?>"> <?=substr($post['titel'], 0, 120) . '...'?></a>
                     </h3>
-                    <i class="far fa-user"> <?=$post['username']; ?> </i>
+                    <i class="far fa-user"> <?=@$post['username']; ?> </i>
                     <i class="far fa-calendar">  <?=$post['created_date']; ?> </i>
                     <p class="preview-text">
 

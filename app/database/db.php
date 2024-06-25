@@ -250,6 +250,47 @@ function selectAllFromPostWithUsersOnIndex($table1, $table2) {
 
 
 
+// Пошук по заголовкам та змісту (звичайний, та простий)
+
+function searchInTitleAndContent($text, $table1, $table2) {
+    $text = trim(strip_tags(stripcslashes(htmlspecialchars($text))));
+    global $pdo;
+
+    $sql = "SELECT 
+    p.*, u.username 
+    FROM $table1 AS p 
+    JOIN $table2 AS u 
+    ON p.id_user = u.id 
+    WHERE p.status = 1 
+    AND p.titel LIKE '%$text%' OR p.content LIKE '%$text%'";
+
+
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    return $query->fetchAll();
+}
+
+
+
+
+
+
+
+// Вибірка запису (posts) з автором для Single.php
+function selectPostFromPostsWithUsersOnSingle($table1, $table2, $id) {
+    global $pdo;
+
+    $sql = "SELECT p.*, u.username FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id WHERE p.id = 1 ";
+
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    return $query->fetch();
+}
+
+
+
 
 
 
