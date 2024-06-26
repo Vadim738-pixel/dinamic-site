@@ -3,11 +3,19 @@
 include ("app/database/db.php") ;
  include "app/controllers/topics.php";
 
-//tt($_GET);
-// tt($_GET[post]);
- // $post = selectOne('posts', ['id' => $_GET['post']]);
- @$post = selectPostFromPostsWithUsersOnSingle('posts', 'users', $_GET['post']);
-//tt($post);
+// tt($_GET);
+
+$posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
+// tt($posts);
+
+ // tt($_GET[$post]);
+
+  $post = @selectOne('posts', ['id' => $_GET['post']]);
+
+  // tt($post);
+
+ // $post = selectPostFromPostsWithUsersOnSingle('posts', 'users', $_GET['post']);
+ // tt($post);
 ?>
 
 <!doctype html>
@@ -49,17 +57,17 @@ include ("app/database/db.php") ;
             <div class="single-post">
                 <div class="img col-12">
 
-                    <img src="<?= BASE_URL . 'assets/Image/posts/' . $post['img']; ?>" class="img-thumbnail" alt="<?=$post['titel']?>" >
+                    <img src="<?= BASE_URL . 'assets/Image/posts/' . @$post['img']; ?>" class="img-thumbnail" alt="<?=@$post['titel']?>" >
 
                 </div>
                 <div class="info">
-                    <i class="far fa-user"> <?=$post['username'];?> </i>
-                    <i class="far fa-calendar">   <?=$post['created_date'];?>  </i>
+                    <i class="far fa-user"> <?=@$post['username'];?> </i>
+                    <i class="far fa-calendar">   <?=@$post['created_date'];?>  </i>
                     </div>
 
                 <div class="single-post_text col-12">
 
-                    <?= $post['content']; ?>
+                    <?= @$post['content']; ?>
                 </div>
             </div>
 
