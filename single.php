@@ -42,10 +42,14 @@ include ("app/database/db.php") ;
     <div class="content row">
 
         <div class="main-content col-md-9 col-12">
-            <h2>Останні публікації про мистецтво та скульптуру</h2>
+
+            <h2>Вивід публікацій</h2>
+
+
             <div class="single-post">
                 <div class="img col-12">
-                    <img src="<?= BASE_URL . 'assets/images/posts/' . $post['img']; ?>" class="img-thumbnail" alt="<?=$post['titel']?>" >
+
+                    <img src="<?= BASE_URL . 'assets/Image/posts/' . $post['img']; ?>" class="img-thumbnail" alt="<?=$post['titel']?>" >
 
                 </div>
                 <div class="info">
@@ -55,7 +59,7 @@ include ("app/database/db.php") ;
 
                 <div class="single-post_text col-12">
 
-                      <?=$post['content'];?>
+                    <?= $post['content']; ?>
                 </div>
             </div>
 

@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search-term'])) {
 
 // $posts = selectAll('posts', ['status' => 1]);
 
-// tt($posts);
+  // tt($posts);
 ?>
 
 
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search-term'])) {
                 <div class="img col-12 col-md-4">
 
 
-                    <img src="<?= BASE_URL . 'assets/images/posts/' . $post['img']; ?>" class="img-thumbnail" alt="<?=$post['titel']?>" >
+                    <img src="<?= BASE_URL . 'assets/Image/posts/' . $post['img']; ?>" class="img-thumbnail" alt="<?=$post['titel']?>" >
 
 
                 </div>

@@ -49,9 +49,9 @@ include "../../app/controllers/posts.php";
             <div class="row title-table">
                 <h2>Управління записами</h2>
                 <div class="col-1">ID</div>
-                <div class="col-3">Назва</div>
+                <div class="col-5">Назва</div>
                 <div class="col-2">Автор</div>
-                <div class="col-6">Управління</div>
+                <div class="col-2">Управління</div>
 
              </div>
 

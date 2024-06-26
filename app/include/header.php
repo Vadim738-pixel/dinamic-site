@@ -11,7 +11,7 @@
                 <ul>
                     <li><a href="../../index.php">Головна</a></li>
                     <li><a href="../../index.php">Про нас</a></li>
-                    <li><a href="../../single.php">Послуги</a></li>
+                    <li><a href="../../single.php">Стаття</a></li>
 
                     <li>
 

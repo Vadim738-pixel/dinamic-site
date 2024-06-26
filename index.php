@@ -109,8 +109,9 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
             <div class="post row">
                 <div class="img col-12 col-md-4">
 
-                    <img src="<?= BASE_URL . 'assets/images/posts/' . $post['img']; ?>" class="img-thumbnail" alt="<?=$post['titel']?>" >
+                    <img src="<?= BASE_URL . 'assets/Image/posts/' . $post['img']; ?>" class="img-thumbnail" alt="<?=$post['titel']?>" >
                 </div>
+
 
                 <div class="post_text col-12 col-md-8">
                     <h3>
@@ -129,146 +130,7 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
 
 
 
-
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/Image/IMG_20240426_145640.jpg" class="img-thumbnail" alt="...">
-                </div>
-                <div class="post_text col-12 col-md-8">
-
-                    <h3>
-                        <a href="#"> Популярна стаття на тему динамічного сайту...</a>
-                    </h3>
-                    <i class="far fa-user"> Ім'я автора </i>
-                    <i class="far fa-calendar">   Бер 11, 2023  </i>
-                    <p class="preview-text">
-                        Ця стаття написана про те, як наша доблесна 42 рота копає окопи!!!
-                        І в цій статті ви знайдете дуже багато чого цікавого для себе!!!
-                    </p>
-                </div>
-            </div>
-
-
-
-
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/Image/IMG_20240426_145745.jpg" class="img-thumbnail" alt="...">
-                </div>
-                <div class="post_text col-12 col-md-8">
-
-                    <h3>
-                        <a href="#"> Популярна стаття на тему динамічного сайту...</a>
-                    </h3>
-                    <i class="far fa-user"> Ім'я автора </i>
-                    <i class="far fa-calendar">   Бер 11, 2023  </i>
-                    <p class="preview-text">
-                        Ця стаття написана про те, як наша доблесна 42 рота копає окопи!!!
-                        І в цій статті ви знайдете дуже багато чого цікавого для себе!!!
-                    </p>
-                </div>
-            </div>
-
-
-
-
-
-
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/Image/AdPage_Wallpaper4.jpg" class="img-thumbnail" alt="...">
-                </div>
-                <div class="post_text col-12 col-md-8">
-
-                    <h3>
-                        <a href="#"> Популярна стаття на тему динамічного сайту...</a>
-                    </h3>
-                    <i class="far fa-user"> Ім'я автора </i>
-                    <i class="far fa-calendar">   Бер 11, 2023  </i>
-                    <p class="preview-text">
-                        Ця стаття написана про те, як наша доблесна 42 рота копає окопи!!!
-                        І в цій статті ви знайдете дуже багато чого цікавого для себе!!!
-                    </p>
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/Image/AdPage_Wallpaper10.jpg" class="img-thumbnail" alt="...">
-                </div>
-                <div class="post_text col-12 col-md-8">
-
-                    <h3>
-                        <a href="#"> Популярна стаття на тему динамічного сайту...</a>
-                    </h3>
-                    <i class="far fa-user"> Ім'я автора </i>
-                    <i class="far fa-calendar">   Бер 11, 2023  </i>
-                    <p class="preview-text">
-                        Ця стаття написана про те, як наша доблесна 42 рота копає окопи!!!
-                        І в цій статті ви знайдете дуже багато чого цікавого для себе!!!
-                    </p>
-                </div>
-            </div>
-
-
-
-
-
-
-
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/Image/AdPage_Wallpaper13.jpg" class="img-thumbnail" alt="...">
-                </div>
-                <div class="post_text col-12 col-md-8">
-
-                    <h3>
-                        <a href="#"> Популярна стаття на тему динамічного сайту...</a>
-                    </h3>
-                    <i class="far fa-user"> Ім'я автора </i>
-                    <i class="far fa-calendar">   Бер 11, 2023  </i>
-                    <p class="preview-text">
-                        Ця стаття написана про те, як наша доблесна 42 рота копає окопи!!!
-                        І в цій статті ви знайдете дуже багато чого цікавого для себе!!!
-                    </p>
-                </div>
-            </div>
-
-
-
-
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/Image/AdPage_Wallpaper14.jpg" class="img-thumbnail" alt="...">
-                </div>
-                <div class="post_text col-12 col-md-8">
-
-                    <h3>
-                        <a href="#"> Популярна стаття на тему динамічного сайту...</a>
-                    </h3>
-                    <i class="far fa-user"> Ім'я автора </i>
-                    <i class="far fa-calendar">   Бер 11, 2023  </i>
-                    <p class="preview-text">
-                        Ця стаття написана про те, як наша доблесна 42 рота копає окопи!!!
-                        І в цій статті ви знайдете дуже багато чого цікавого для себе!!!
-                    </p>
-                </div>
-            </div>
-
-
-
-
-
-
-        </div>
-
+</div>
 
 
 
@@ -286,7 +148,9 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
                 <h3>Категорії</h3>
                 <ul>
                     <?php foreach ($topics as $key => $topic): ?>
-                        <li><a href="<?=BASE_URL . 'category.php?id=' . $topic['id'];?>"><?=$topic['name']?></a></li>
+                        <li>
+                            <a href="<?=BASE_URL . 'category.php?id=' . $topic['id'];?>"><?=$topic['name']?></a>
+                        </li>
                     <?php endforeach; ?>
 
                 </ul>
