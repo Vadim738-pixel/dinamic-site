@@ -293,6 +293,30 @@ function selectPostFromPostsWithUsersOnSingle($table1, $table2, $id) {
 
 
 
+function selectTopTopicFromPostOnIndex($table1) {
+    global $pdo;
+
+    $sql = "SELECT * FROM $table1 WHERE id_topic = 2";
+
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    return $query->fetchAll();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 $sql = "SELECT * FROM users";

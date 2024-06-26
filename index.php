@@ -4,13 +4,13 @@ include ("path.php") ;
 include ("app/database/db.php") ;
 include "app/controllers/topics.php";
 
-
-
 // $posts = selectAll('posts', ['status' => 1]);
 
 $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
-
 // tt($posts);
+$topTopic = selectTopTopicFromPostOnIndex('posts');
+// tt($topTopic);
+
 ?>
 
 
@@ -46,37 +46,32 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
     <div class="row">
         <h2 class="slider-title"> Топові публікації</h2>
         </div>
+
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
+
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="assets/Image/AdPage_Wallpaper2.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption hack  carousel-caption d-none d-md-block">
-                <h5><a href="">First slide label</a></h5>
+        <div class="carousel-inner">
+            <?php foreach ($topTopic as $key => $post): ?>
+            <?php if($key == 0): ?>
+            <div class="carousel-item active">
+                <?php else: ?>
+                     <div class="carousel-item">
+                <?php endif; ?>
 
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="assets/Image/AdPage_Wallpaper3.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption hack carousel-caption d-none d-md-block">
-                <h5><a href="">First slide label</a></h5>
+                             <img src="<?= BASE_URL . 'assets/Image/posts/' . $post['img']; ?>" class="d-block w-100" alt="<?=$post['titel']; ?> " >
 
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="assets/Image/AdPage_Wallpaper4.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption hack carousel-caption d-none d-md-block">
-                <h5><a href="">First slide label</a></h5>
-        </div>
+                <div class="carousel-caption-hack  carousel-caption d-none d-md-block" >
+
+                    <h5> <a href="<?=BASE_URL . 'single.php?post=' . $post['id'];?>"> <?=substr($post['titel'], 0, 120) . '...'?></a></h5>
+                </div>
+
+                </div>
+            <?php endforeach; ?>
+
     </div>
-
-        <div class="carousel-item">
-            <img src="assets/Image/AdPage_Wallpaper10.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption hack carousel-caption d-none d-md-block">
-                <h5><a href="">First slide label</a></h5>
-            </div>
-        </div>
-
+    </div>
+    </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -112,7 +107,6 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
                     <img src="<?= BASE_URL . 'assets/Image/posts/' . $post['img']; ?>" class="img-thumbnail" alt="<?=$post['titel']?>" >
                 </div>
 
-
                 <div class="post_text col-12 col-md-8">
                     <h3>
                         <a href="<?=BASE_URL . 'single.php?post=' . $post['id'];?>"> <?=substr($post['titel'], 0, 120) . '...'?></a>
@@ -120,15 +114,11 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
                     <i class="far fa-user"> <?=$post['username']; ?> </i>
                     <i class="far fa-calendar">  <?=$post['created_date']; ?> </i>
                     <p class="preview-text">
-
                         <?=mb_substr($post['content'], 0, 150, 'UTF-8') . '...'?>
-
                     </p>
                 </div>
             </div>
         <?php endforeach; ?>
-
-
 
 </div>
 

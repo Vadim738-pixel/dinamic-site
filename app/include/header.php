@@ -11,13 +11,13 @@
                 <ul>
                     <li><a href="../../index.php">Головна</a></li>
                     <li><a href="../../index.php">Про нас</a></li>
-                    <li><a href="../../single.php">Стаття</a></li>
+                    <li><a href="../../single.php">Активуйте</a></li>
 
                     <li>
 
 
                         <?php if (isset($_SESSION['id'])): ?>
-                        <a href= "<?php echo BASE_URL . "/index.php" ?>" >
+                        <a href= "<?php echo BASE_URL . "index.php" ?>" >
                             <i class="fa-solid fa-user"></i>
                             <?php echo $_SESSION['login']; ?>
                         </a>
@@ -30,7 +30,7 @@
                         <?php else: ?>
                             <a href="<?php echo BASE_URL . "log.php" ?>" >
                                 <i class="fa-solid fa-user"></i>
-                                Ввійти
+                                Вхід
                             </a>
                         <ul>
                             <li><a href="<?php echo BASE_URL . "reg.php" ?>" >  Регістрація</a> </li>
