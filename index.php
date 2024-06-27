@@ -6,10 +6,20 @@ include "app/controllers/topics.php";
 
 // $posts = selectAll('posts', ['status' => 1]);
 
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+// tt($page);
+$limit = 2;
+$offset = $limit * ($page - 1);
+$total_pages = round (countRow ('posts')/ $limit, 0);
+
+// $posts = selectAllFromPostWithUsersOnIndex('posts', 'users', $limit, $offset);
 $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
 // tt($posts);
 $topTopic = selectTopTopicFromPostOnIndex('posts');
 // tt($topTopic);
+
+ // tt($total_pages);
+
 
 ?>
 
@@ -119,6 +129,9 @@ $topTopic = selectTopTopicFromPostOnIndex('posts');
                 </div>
             </div>
         <?php endforeach; ?>
+
+        <!-- Підключення навігації -->
+            <?php include ("app/include/pagination.php") ?>
 
 </div>
 
