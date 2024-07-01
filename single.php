@@ -1,5 +1,7 @@
 
-<?php include ("path.php");
+<?php
+
+include ("path.php");
 include ("app/database/db.php") ;
  include "app/controllers/topics.php";
 
@@ -36,7 +38,7 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
      integrity="sha384-fnmOCqbTLWILj8LyTjo7mOUStjsKC4UpQbqyi7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
      -->
 
-    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="stylesheet" href="assets/CSS/style.css">
 
     <title>My Blog!!!</title>
 </head>
@@ -52,11 +54,6 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
         <div class="main-content col-md-9 col-12">
 
             <h2> Вивід публікацій по категоріях </h2>
-            <h2>(виберіть будь-ласка категорію  в меню </h2>
-            <h2>із правої сторони --> )</h2>
-            <h2> А якщо хочете зареєструватися та увійти на наш сайт</h2>
-            <h2>то натисніть кнопку "Вхід" в горі із правого боку</h2>
-
 
 
             <div class="single-post">
@@ -74,6 +71,8 @@ $posts = selectAllFromPostWithUsersOnIndex('posts', 'users');
 
                     <?= @$post['content']; ?>
                 </div>
+                <!-- ІНКЛЮДИМО HTML БЛОК ІЗ КОМЕНТАРЯМИ -->
+                <?php include( ROOT_PATH . "/app/include/comments.php"); ?>
             </div>
 
 

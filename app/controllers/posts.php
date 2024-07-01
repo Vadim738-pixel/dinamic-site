@@ -193,6 +193,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['edit_post'])) {
     @$topic = $_POST["id_topic"];
 }
 
+
+
+
+// Статус опублікувати або зняти із публікації
+
 if ($_SERVER['REQUEST_METHOD'] === "GET" && isset($_GET['pub_id'])) {
     $id = $_GET['pub_id'];
     $publish = $_GET['publish'];

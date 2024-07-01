@@ -16,6 +16,10 @@
                 <li>
                     <a href="<?php echo BASE_URL . "admin/users/index.php"; ?>">Користувачі</a>
                 </li>
+                <li>
+                    <a href="<?php echo BASE_URL . "admin/comments/index.php"; ?>">Комментарі</a>
+                </li>
+
 
             </ul>
         </div>
